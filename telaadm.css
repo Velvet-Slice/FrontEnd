@@ -1,0 +1,145 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    background-color: #fdf6e3;
+}
+
+.logo-container {
+    width: 100%;
+    /* Garante que ocupe toda a largura da sidebar */
+    height: 150px;
+    /* Altura da área da logo */
+    display: flex;
+    /* Ativa o Flexbox */
+    justify-content: center;
+    /* Centraliza horizontalmente */
+    align-items: center;
+    /* Centraliza verticalmente */
+    margin-bottom: 30px;
+}
+
+.logo-container img {
+    max-width: 120px;
+    /* Tamanho máximo da logo */
+    height: auto;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    background-color: #5C2C06;
+    color: white;
+    height: 100vh;
+    padding-top: 30px;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 20px;
+    justify-content: center;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+    /* Centraliza o texto dos itens */
+}
+
+.sidebar ul li {
+    padding: 15px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    display: block;
+}
+
+.sidebar ul li:hover {
+    background-color: #7B3F10;
+}
+
+/* Conteúdo principal */
+.content {
+    flex-grow: 1;
+    padding: 40px 60px;
+}
+
+.content h1 {
+    font-size: 24px;
+    color: #5C2C06;
+    margin-bottom: 30px;
+}
+
+/* Formulário */
+.form-section {
+    background-color: #fff8f0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+.form-section h2 {
+    margin-bottom: 20px;
+    color: #5C2C06;
+}
+
+form {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 200px;
+    height: 35px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+}
+
+button {
+    background-color: #FF7F50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #e76b3c;
+}
+
+/* Tabela */
+.table-section {
+    background-color: #fff8f0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #A0522D;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f1e4d1;
+}
