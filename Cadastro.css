@@ -1,0 +1,92 @@
+body {
+    margin: 0;
+    background-color: #FFF6E9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: "Newsreader", serif;
+  }
+  
+  .container {
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+  }
+  
+  .back {
+    display: block;
+    text-align: left;
+    color: #4F2C1D;
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  
+  .logo {
+    width: 70%;
+    margin-bottom: 15px;
+    padding-left: 65px;
+  }
+  
+  .cadastro-form {
+    background-color: white;
+    padding: 20px;
+    width: 105%;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cadastro-form h2 {
+    color: #4F2C1D;
+  }
+  
+  .mensagem {
+    font-size: 14px;
+    color: #4F2C1D;
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+  
+  .campos-cadastro {
+    margin-top: 10px;
+    
+  
+  }
+
+  .login-form input::placeholder,
+  .cadastro-form input::placeholder {
+  color: #4f2c1dc4;
+  font-weight: bold;
+  font-family: "Newsreader", serif;
+}       
+  
+  .cadastro-form input {
+    
+    border: 1px solid #E5E5E5;
+    transition: all 0.3s ease;
+    outline: 0;
+    background-color: #FFF6E9;
+    border-radius: 5px;
+    width: 330px;
+    padding: 12px;
+    margin-bottom: 25px;
+    font-size: 14px;
+  }
+  
+  button {
+    width: 40%;
+    background-color: #4F2C1D;
+    color: white;
+    border: none;
+    padding-top: 20px;
+    border-radius: 50px;
+    padding: 12px;
+    letter-spacing: 2px;
+    font-family: "Newsreader", serif;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
