@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="pedidos.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter&family=Lexend&family=Newsreader&display=swap" rel="stylesheet" />
+  <title>Velvet Slice - Admin</title>
+</head>
+
+<body>
+  <div class="sidebar">
+    <div class="logo-container">
+      <img src="/imagensdoprojeto/slicelogo.png" alt="Logo Velvet Slice" />
+    </div>
+    <ul>
+      <li>Pedidos</li>
+      <li>Produtos</li>
+      <li>Clientes</li>
+    </ul>
+  </div>
+
+  <div class="content">
+    <h1>Pedidos - Cadastro</h1>
+
+    <div class="form-section">
+      <h2>| Cadastro de informações do pedido</h2>
+      <form>
+        <input type="text" placeholder="Nome do Cliente" />
+        <input type="date" placeholder="Data do Pedido" />
+        <input type="date" placeholder="Data da Entrega" />
+        <textarea placeholder="Descrição do Pedido"></textarea>
+        <label class="checkbox-container">
+          <input type="checkbox" />
+          <span>Pago</span>
+        </label>
+       <br><br>
+        <label class="file-upload">
+          <span>Imagem do Pedido:</span>
+          <input type="file" accept="image/*" />
+        </label>
+        <button type="submit">Salvar</button>
+        <button type="submit">Editar</button>
+        <button type="submit">Excluir</button>
+      </form>
+    </div>
+
+    <div class="table-section">
+      <h2>Lista de Pedidos</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Cliente</th>
+            <th>Data Pedido</th>
+            <th>Entrega</th>
+            <th>Pago</th>
+            <th>Imagem</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>#PED12345</td>
+            <td>Vinicius</td>
+            <td>2025-10-21</td>
+            <td>2025-10-25</td>
+            <td>Sim</td>
+            <td><img src="/imagensdoprojeto/exemplo.png" alt="Pedido" class="pedido-img" /></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
+

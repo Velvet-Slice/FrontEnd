@@ -9,25 +9,19 @@ body {
 
 .logo-container {
     width: 100%;
-    /* Garante que ocupe toda a largura da sidebar */
     height: 150px;
-    /* Altura da área da logo */
+
     display: flex;
-    /* Ativa o Flexbox */
     justify-content: center;
-    /* Centraliza horizontalmente */
     align-items: center;
-    /* Centraliza verticalmente */
     margin-bottom: 30px;
 }
 
 .logo-container img {
     max-width: 120px;
-    /* Tamanho máximo da logo */
     height: auto;
 }
 
-/* Sidebar */
 .sidebar {
     width: 220px;
     background-color: #5C2C06;
@@ -48,7 +42,6 @@ body {
     padding: 0;
     width: 100%;
     text-align: center;
-    /* Centraliza o texto dos itens */
 }
 
 .sidebar ul li {
@@ -62,7 +55,6 @@ body {
     background-color: #7B3F10;
 }
 
-/* Conteúdo principal */
 .content {
     flex-grow: 1;
     padding: 40px 60px;
@@ -74,7 +66,6 @@ body {
     margin-bottom: 30px;
 }
 
-/* Formulário */
 .form-section {
     background-color: #fff8f0;
     padding: 20px;
@@ -117,7 +108,6 @@ button:hover {
     background-color: #e76b3c;
 }
 
-/* Tabela */
 .table-section {
     background-color: #fff8f0;
     padding: 20px;

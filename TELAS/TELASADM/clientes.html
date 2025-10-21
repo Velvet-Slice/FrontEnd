@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="telaadm.css">
+    <link rel="stylesheet" type="text/css" href="clientes.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
 <body>
     <div class="sidebar">
         <div class="logo-container">
-            <img src="slicelogo.png">
+            <img src="/imagensdoprojeto/slicelogo.png">
         </div>
         <ul>
             <li>Pedidos</li>
@@ -25,21 +25,29 @@
         </ul>
     </div>
 
+
+
     <div class="content">
         <h1>Clientes - Cadastro</h1>
 
         <div class="form-section">
             <h2>| Cadastro de informações do cliente</h2>
+           
             <form>
                 <input type="text" placeholder="Nome" />
                 <input type="text" placeholder="CPF" />
                 <input type="email" placeholder="E-mail" />
-                <button type="submit">Confirmar</button>
+                   <input type="email" placeholder="Senha" />
+                <button type="submit">Salvar</button>
+                 <button type="submit">Editar</button>
+                  <button type="submit">Excluir</button>
+
             </form>
         </div>
 
         <div class="table-section">
             <h2>Lista de Clientes</h2>
+
             <table>
                 <thead>
                     <tr>
@@ -58,6 +66,7 @@
                     </tr>
                 </tbody>
             </table>
+            
         </div>
     </div>
 </body>
