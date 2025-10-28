@@ -78,6 +78,52 @@
         <p class="preco">R$ 99,90</p>
       </div>
     </div>
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal-content">
+        <span class="close-modal" id="closeModal">×</span>
+    
+        <div class="modal-left">
+          <img id="modalImg" src="" alt="">
+        </div>
+    
+        <div class="modal-right">
+          <h2 id="modalTitle"></h2>
+          <p id="modalDesc"></p>
+          <p class="modal-price" id="modalPrice"></p>
+    
+          <div class="modal-actions">
+            <div class="quantity-group">
+              <button class="qty-btn" id="decrease">−</button>
+              <span id="quantity">01</span>
+              <button class="qty-btn" id="increase">+</button>
+            </div>
+        
+            <button class="add-btn">Adicionar</button>
+        </div>
+        </div>
+      </div>
+    </div>
+    <script src="modal.js"></script>
   </section>
+
+  <section class="pedido">
+    <div class="pedido-container">
+      <div class="pedido-img">
+        <img src="../../assets/img/Fazer um pedido.png" alt="">
+      </div>
+  
+      <div class="pedido-form">
+        <h2>Como fazer um pedido ?</h2>
+        <p>Informe seus dados e entraremos em contato com você em instantes!</p>
+  
+        <form>
+          <input type="text" placeholder="Nome">
+          <input type="tel" placeholder="Telefone">
+          <button type="submit" class="btn-enviar">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </section>
+  
 </body>
 </html>
