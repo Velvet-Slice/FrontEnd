@@ -1,26 +1,192 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de Bolos</title>
   <link rel="stylesheet" href="LP.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
-
-<title>Velvet Slice</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <nav class="navbar">
-    <div class="navbar-logo">
-      <img src="../../assets/img/Logo_padrão.png" alt="Logo Velvetnavbar-links">
-      <li>produtosProdutos</a></li>
-      <li>contatoContato</a></li>
-      <li>reviewsReviews</a></li>
-      <li>sobreSobre nós</a></li>
-    </ul>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="/src/assets/img/Logo_padrão.png" width="150" alt="logo" />
+      </div>
+      <ul class="nav-links">
+        <li><a href="#">Produtos</a></li>
+        <li><a href="#">Contato</a></li>
+        <li><a href="#">Reviews</a></li>
+        <li><a href="#">Sobre nós</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="login-btn">Entrar</button>
+        <span class="cart-icon">
+          <img src="/src/assets/img/carrinho.png" width="45" height="45" alt="carrinho" />
+        </span>
+      </div>
+    </nav>
+  </header>
 
+  <main class="hero">
+    <div class="hero-text">
+      <h1><span class="fonte-especial">Sua confeitaria online</span></h1>
+      <p>Delicadeza que derrete na boca</p>
+      <button class="cta-btn">Escolha o seu bolo</button>
     </div>
-  </nav>
+
+    <section class="carousel">
+      <div class="carousel-container">
+        <button class="carousel-btn prev">‹</button>
+        <div class="carousel-track">
+          <img src="/src/assets/img/BoloLP.png" alt="Bolo 1" />
+          <img src="/src/assets/img/BoloLP.png" alt="Bolo 3" />
+        </div>
+        <button class="carousel-btn next">›</button>
+      </div>
+    </section>
+
+    <script>
+      const track = document.querySelector('.carousel-track');
+      const prevBtn = document.querySelector('.prev');
+      const nextBtn = document.querySelector('.next');
+      let index = 0;
+
+      const updateCarousel = () => {
+        const width = track.children[0].clientWidth;
+        track.style.transform = `translateX(-${index * width}px)`;
+      };
+
+      nextBtn.addEventListener('click', () => {
+        if (index < track.children.length - 1) index++;
+        updateCarousel();
+      });
+
+      prevBtn.addEventListener('click', () => {
+        if (index > 0) index--;
+        updateCarousel();
+      });
+
+      window.addEventListener('resize', updateCarousel);
+    </script>
+  </main>
+  <section class="catalogo">
+    <h1>Catálogo</h1>
+    <div class="categorias">
+      <h2>Mais Vendidos</h2>
+      <h2>Bolos Personalizados</h2>
+      <h2>Sabores Especiais</h2>
+    </div>
+
+    <div class="grade">
+      <div class="item">
+        <img src="../../assets/img/Caseirinho.png" alt="Bolo Caseirinho">
+        <p class="nome">Caseirinho</p>
+        <p class="preco">R$ 79,90</p>
+      </div>
+
+      <div class="item">
+        <img src="../../assets/img/Mel e amor.png" alt="Bolo Mel e Amor">
+        <p class="nome">Mel e Amor</p>
+        <p class="preco">R$ 82,90</p>
+      </div>
+
+      <div class="item">
+        <img src="../../assets/img/Frutado.png" alt="Bolo Frutado">
+        <p class="nome">Frutado</p>
+        <p class="preco">R$ 89,90</p>
+      </div>
+
+      <div class="item">
+        <img src="../../assets/img/Mel e amor.png" alt="Bolo Veludo">
+        <p class="nome">Veludo</p>
+        <p class="preco">R$ 199,90</p>
+      </div>
+
+      <div class="item">
+        <img src="../../assets/img/Encanto.png" alt="Bolo Encanto">
+        <p class="nome">Encanto</p>
+        <p class="preco">R$ 94,90</p>
+      </div>
+
+      <div class="item">
+        <img src="../../assets/img/Caramelo.png" alt="Bolo Caramelo">
+        <p class="nome">Caramelo</p>
+        <p class="preco">R$ 85,90</p>
+      </div>
+
+      <div class="item">
+        <img src="../../assets/img/Tropical.png" alt="Bolo Tropical">
+        <p class="nome">Tropical</p>
+        <p class="preco">R$ 99,90</p>
+      </div>
+
+       <div class="item">
+        <img src="../../assets/img/Tropical.png" alt="Bolo Tropical">
+        <p class="nome">Tropical</p>
+        <p class="preco">R$ 99,90</p>
+      </div>
+         <div class="item">
+        <img src="../../assets/img/Caseirinho.png" alt="Bolo Tropical">
+        <p class="nome">Tropical</p>
+        <p class="preco">R$ 99,90</p>
+      </div>
+
+       <div class="item">
+        <img src="../../assets/img/Frutado.png" alt="Bolo Tropical">
+        <p class="nome">Tropical</p>
+        <p class="preco">R$ 99,90</p>
+      </div>
+    </div>
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal-content">
+        <span class="close-modal" id="closeModal">×</span>
+    
+        <div class="modal-left">
+          <img id="modalImg" src="" alt="">
+        </div>
+    
+        <div class="modal-right">
+          <h2 id="modalTitle"></h2>
+          <p id="modalDesc"></p>
+          <p class="modal-price" id="modalPrice"></p>
+    
+          <div class="modal-actions">
+            <div class="quantity-group">
+              <button class="qty-btn" id="decrease">−</button>
+              <span id="quantity">01</span>
+              <button class="qty-btn" id="increase">+</button>
+            </div>
+        
+            <button class="add-btn">Adicionar</button>
+        </div>
+        </div>
+      </div>
+    </div>
+    <script src="modal.js"></script>
+  </section>
+
+  <section class="pedido">
+    <div class="pedido-container">
+      <div class="pedido-img">
+        <img src="../../assets/img/Fazer um pedido.png" alt="">
+      </div>
+  
+      <div class="pedido-form">
+        <h2>Como fazer um pedido ?</h2>
+        <p>Informe seus dados e entraremos em contato com você em instantes!</p>
+  
+        <form>
+          <input type="text" placeholder="Nome">
+          <input type="tel" placeholder="Telefone">
+          <button type="submit" class="btn-enviar">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </section>
+  
 </body>
 </html>
