@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catálogo de Bolos</title>
+  <title>Velvet Slice</title>
   <link rel="stylesheet" href="LP.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,15 +14,17 @@
   <header>
     <nav class="navbar">
       <div class="logo">
-        <img src="/src/assets/img/Logo_padrão.png" width="150" alt="logo" />
+       <a href="#1">
+           <img src="/src/assets/img/Logo_padrão.png" width="150" alt="logo">
+        </a>
       </div>
-      <ul class="nav-links">
-        <li><a href="#">Produtos</a></li>
-        <li><a href="#">Contato</a></li>
-        <li><a href="#">Reviews</a></li>
-        <li><a href="#">Sobre nós</a></li>
+      <ul class="nav-links" >
+        <li><a href="#2">Produtos</a></li>
+        <li><a href="#3">Contato</a></li>
+        <li><a href="#4">Reviews</a></li>
+        <li><a href="#5">Sobre nós</a></li>
       </ul>
-      <div class="nav-actions">
+      <div class="nav-actions" >
         <button class="login-btn">Entrar</button>
         <span class="cart-icon">
           <img src="/src/assets/img/carrinho.png" width="45" height="45" alt="carrinho" />
@@ -31,11 +33,11 @@
     </nav>
   </header>
 
-  <main class="hero">
+  <main class="hero" id="1">
     <div class="hero-text">
       <h1><span class="fonte-especial">Sua confeitaria online</span></h1>
       <p>Delicadeza que derrete na boca</p>
-      <button class="cta-btn">Escolha o seu bolo</button>
+      <button class="cta-btn" >Escolha o seu bolo</button>
     </div>
 
     <section class="carousel">
@@ -43,7 +45,7 @@
         <button class="carousel-btn prev">‹</button>
         <div class="carousel-track">
           <img src="/src/assets/img/BoloLP.png" alt="Bolo 1" />
-          <img src="/src/assets/img/BoloLP.png" alt="Bolo 3" />
+          <img  src="/src/assets/img/BoloLP.png" alt="Bolo 2" />
         </div>
         <button class="carousel-btn next">›</button>
       </div>
@@ -73,7 +75,7 @@
       window.addEventListener('resize', updateCarousel);
     </script>
   </main>
-  <section class="catalogo">
+  <section class="catalogo" id="2">
     <h1>Catálogo</h1>
     <div class="categorias">
       <h2>Mais Vendidos</h2>
@@ -169,9 +171,10 @@
     <script src="modal.js"></script>
   </section>
 
-  <section class="pedido">
+  <section class="pedido" id="3">
     <div class="pedido-container">
       <div class="pedido-img">
+
         <img src="../../assets/img/Fazer um pedido.png" alt="">
       </div>
   
@@ -187,6 +190,70 @@
       </div>
     </div>
   </section>
-  
+  <footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-brand">
+      <a href="#1">
+      <img src="/src/assets/img/LogoRodape.png" width="170" alt="Velvet Slice">
+      </a>
+      <p>Descubra a doçura que transforma momentos em memórias. Velvet Slice, bolos artesanais pensados para te encantar em cada detalhe.</p>
+
+      <div class="social-icons">
+        <a href="#"><img src="/src/assets/img/Facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="/src/assets/img/Instagram.png" alt="Instagram"></a>
+        <a href="#"><img src="/src/assets/img/Google.png" alt="Google"></a>
+        <a href="#"><img src="/src/assets/img/Linkedln.png" alt="LinkedIn"></a>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <div class="column">
+        <h3>Sobre</h3>
+        <a href="#">Quem somos</a>
+        <a href="#">Nossa história</a>
+        <a href="#">Nossa equipe</a>
+        <a href="#">Missão e valores</a>
+        <a href="#">Depoimentos</a>
+      </div>
+
+      <div class="column">
+        <h3>Atendimento</h3>
+        <a href="#">Contato</a>
+        <a href="#">Localização</a>
+        <a href="#">Encomendas</a>
+        <a href="#">Perguntas frequentes</a>
+        <a href="#">Horários de funcionamento</a>
+      </div>
+
+      <div class="column">
+        <h3>Produtos</h3>
+        <a href="#">Bolos personalizados</a>
+        <a href="#">Bolos finos</a>
+        <a href="#">Bolos para festas</a>
+        <a href="#">Bolos temáticos</a>
+        <a href="#">Bolos infantis</a>
+      </div>
+
+      <div class="column">
+        <h3>Explore</h3>
+        <a href="#">Blog de receitas</a>
+        <a href="#">Promoções</a>
+        <a href="#">Eventos e novidades</a>
+        <a href="#">Dicas de conservação</a>
+        <a href="#">Galeria de fotos</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>Copyright© 2025 VelvetSlice. Todos os direitos reservados.</p>
+    <div class="footer-legal">
+      <a href="#">Política de Privacidade</a>
+      <a href="#">Termos de Uso</a>
+      <a href="#">Legal</a>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
