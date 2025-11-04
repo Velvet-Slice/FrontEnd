@@ -484,6 +484,7 @@ body {
 }
 
 .pedido-form {
+
   max-width: 430px;
 }
 
@@ -498,6 +499,7 @@ body {
 }
 
 .pedido-form p {
+
   font-size: 2rem;
   color: #E6642F;
   margin-bottom: 25px;
@@ -573,6 +575,7 @@ body {
     font-size: 2.5rem;
     color: #873B0B;
     margin-bottom: 40px;
+    margin-top: 40px;
 
 }
 
@@ -592,6 +595,7 @@ body {
 
 .review-card img {
     width: 350px;
+    margin-top: 30px;
     height:  350px;
     object-fit: cover;
     border-radius: 50%;
@@ -622,6 +626,81 @@ body {
     }
 }
 
+.sobre-nos {
+  display: flex;
+  justify-content: center;
+  padding: 80px 0;
+  margin-top: 200px;
+  background-color: #fff;
+ 
+ 
+}
+
+.sobre-nos-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 60px;
+  max-width: 1300px;
+  width: 100%;
+  padding: 0 60px;
+}
+
+.sobre-nos .imagem img {
+  height: auto;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.sobre-nos .texto {
+  max-width: 450px;
+  font-family: "Newsreader";
+  font-style: italic;
+  color: #BD4819;
+  margin-left: 30px;
+
+}
+
+.sobre-nos .texto h2 {
+  font-size: 36px;
+  margin-top: 50px;
+  margin-bottom: 25px;
+  font-weight: 600;
+  color: #7b4b3a;
+}
+
+.sobre-nos .texto p {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  text-align: start;
+}
+
+
+@media (max-width: 980px) {
+  .sobre-nos-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 30px;
+  }
+
+  .sobre-nos .imagem img {
+    width: 100%;
+  }
+
+  .sobre-nos .texto {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .sobre-nos .texto p {
+    text-align: justify;
+  }
+}
+
+
+
+
+
 
 
 .footer {
@@ -629,7 +708,7 @@ body {
   background-color: #ffffff;
   padding: 70px 90px 40px;
   color: #4F2C1D;
-  margin-top: 300px;
+  margin-top: 55px;
 }
 
 .footer-container {
@@ -737,38 +816,7 @@ body {
     margin: 0 10px;
   }
 }
-.sobre-nos {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 60px 40px;
-  background-color: #fff;
-  font-family: 'Helvetica Neue', sans-serif;
-  gap: 40px;
-}
 
-.sobre-nos .imagem img {
-  max-width: 500px;
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
 
-.sobre-nos .texto {
-  max-width: 600px;
-  color: #333;
-}
 
-.sobre-nos .texto h2 {
-  font-size: 32px;
-  margin-bottom: 20px;
-  font-weight: 600;
-  color: #7b4b3a;
-}
 
-.sobre-nos .texto p {
-  font-size: 18px;
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
