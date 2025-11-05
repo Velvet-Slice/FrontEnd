@@ -26,8 +26,10 @@
       </ul>
       <div class="nav-actions" >
         <button class="login-btn">Entrar</button>
-        <span class="cart-icon">
+          <button id="btn-cart" class="btn-cart">
           <img src="/src/assets/img/carrinho.png" width="45" height="45" alt="carrinho" />
+            <button id="btn-cart" class="btn-cart">  </button>
+
         </span>
       </div>
     </nav>
@@ -318,5 +320,51 @@
     </div>
   </div>
 </footer>
+
+<!--CARRINHO -->
+<div id="cart-modal" class="cart-overlay" style="display: none;">
+
+  <div class="cart-container">
+    <button class="close-btn">✕</button>
+
+    <div class="cart-header">
+          <img src="/src/assets/img/carrinho.png" width="45" height="45" alt="carrinho" />
+      <h2>Seu carrinho</h2>
+    </div>
+
+    <div class="cart-items"><!-- itens via JS estático para teste -->
+    </div>
+
+    <div class="subtotal">
+      <p>Subtotal: <strong id="subtotal-value">R$ 0,00</strong></p>
+    </div>
+
+    <button class="finalize-btn">Finalizar pedido</button>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  const cartModal = document.getElementById("cart-modal");
+  const btnCart = document.getElementById("btn-cart");
+  const closeBtn = document.querySelector(".close-btn");
+
+  // abre 
+  btnCart.addEventListener("click", () => {
+    cartModal.style.display = "flex";
+  });
+
+  // fecha
+  closeBtn.addEventListener("click", () => {
+    cartModal.style.display = "none";
+  });
+});
+cartModal.addEventListener("click", e => {
+  if (e.target === cartModal) {
+    cartModal.style.display = "none";
+  }
+});
+
+</script>
 </body>
 </html>
