@@ -77,10 +77,12 @@ body {
   font-weight: 400;
   font-style: normal;
   font-size: 5.5rem;
+ 
   color: #e67e22;
-  display: flex;
-  justify-content: center;
+  white-space: nowrap;
 }
+
+
 
 .login-btn {
   background-color: #e67e22;
@@ -106,6 +108,11 @@ body {
     transition: 0.3s ease;
 }
 
+.login-btn a{
+  text-decoration: none;
+  color: white;
+}
+
 .cart-icon {
   font-size: 1rem;
   cursor: pointer;
@@ -125,12 +132,14 @@ body {
 .hero-text {
   max-width: 50%;
   flex: 1;
-  padding-right: 40px;
+  margin-right: 70px;
 }
 
 .hero-text h1 {
   font-size: 2.5rem;
   margin-bottom: 20px;
+ 
+
 }
 
 .hero-text p {
@@ -219,13 +228,12 @@ body {
 }
 
 .catalogo {
-  max-width: 1820px;
-  width: 100%;
+
   text-align: center;
   color: #4F2C1D;
   font-family: 'Newsreader';
   margin-top: 1px;
-  padding: 1px 20px;
+ 
 }
 
 .catalogo h1 {
@@ -267,7 +275,7 @@ body {
 
 .grade {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 50px;
   justify-items: center;
   margin-top: 30px;
@@ -277,11 +285,11 @@ body {
   margin-top: 25px;
   background-color: #fff;
   border-radius: 10px;
-  padding: 10px;
+  padding: 20px;
   text-align: center;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
-  width: 280px;
+  width: 290px;
 }
 
 .item img {
@@ -548,14 +556,13 @@ body {
 
 
 .btn-enviar {
-  background: #E6642F;
+  background: #e67e22;;
   color: white;
   padding: 15px;
   border: none;
   width: 45%;
   border-radius: 30px;
   font-size: 1.1rem;
-  font-weight: bold;
   cursor: pointer;
   transition: 0.3s ease;
   font-family: "Newsreader";
@@ -599,7 +606,7 @@ body {
     align-items: flex-start;
     gap: 60px;
     padding: 0 5%;
-    flex-wrap: wrap;
+   margin-right: 20px;
 }
 
 .review-card {
@@ -720,7 +727,7 @@ body {
 .footer {
   width: 100%;
   background-color: #ffffff;
-  padding: 70px 90px 40px;
+  padding: 70px 70px 40px;
   color: #4F2C1D;
   margin-top: 55px;
 }
@@ -728,15 +735,15 @@ body {
 .footer-container {
   display: flex;
   justify-content: space-between;
-  gap: 60px;
+  gap: 70px;
 }
 
 .footer-brand {
-  max-width: 330px;
+  max-width: 370px;
 }
 
 .footer-brand p {
-  margin: 18px 0 25px;
+  margin: 15px 0 30px;
   font-size: 1rem;
   line-height: 1.5;
 }
@@ -755,9 +762,11 @@ body {
 
 .footer-links {
   display: flex;
-  gap: 160px;
+  gap: 120px;
   text-align: left;
-  margin-right: 180px;
+
+  margin-right: 120px;
+
 
 }
 
@@ -766,6 +775,7 @@ body {
   margin-bottom: 18px;
   color: #A65110;
   font-weight: bold;
+
 }
 
 .column a {
