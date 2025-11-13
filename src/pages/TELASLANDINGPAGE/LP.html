@@ -338,6 +338,25 @@
   </div>
 </div>
 
+<div class="confirm-overlay" id="confirmOverlay">
+  <div class="confirm-modal">
+    
+    <span class="confirm-close" id="closeConfirm">×</span>
+
+    <h2>Confirmar pedido</h2>
+    <p class="confirm-sub">Preencha seus dados para continuar</p>
+
+    <form id="confirmForm">
+      <input type="text" id="confName" placeholder="Seu nome" required>
+      <input type="tel" id="confPhone" placeholder="Seu telefone" required>
+      <textarea id="confObs" placeholder="Observações (opcional)"></textarea>
+
+      <button type="submit" class="confirm-btn">Confirmar e ir para o WhatsApp</button>
+      <button type="button" class="cancel-btn" id="cancelConfirm">Cancelar</button>
+    </form>
+  </div>
+</div>
+
 <script>
   document.addEventListener("DOMContentLoaded", () => {
   const cartModal = document.getElementById("cart-modal");
@@ -361,5 +380,62 @@ cartModal.addEventListener("click", e => {
 });
 
 </script>
+
+
+<script>
+  const confirmOverlay = document.getElementById("confirmOverlay");
+  const finalizeBtn = document.querySelector(".finalize-btn");
+  const closeConfirm = document.getElementById("closeConfirm");
+  const cancelConfirm = document.getElementById("cancelConfirm");
+
+  
+  finalizeBtn.addEventListener("click", () => {
+    confirmOverlay.style.display = "flex";
+  });
+
+  function closeModalConfirm() {
+    confirmOverlay.style.display = "none";
+  }
+
+  closeConfirm.addEventListener("click", closeModalConfirm);
+  cancelConfirm.addEventListener("click", closeModalConfirm);
+
+  
+  confirmOverlay.addEventListener("click", e => {
+    if (e.target === confirmOverlay) closeModalConfirm();
+  });
+
+  // ENVIO PARA WHATSAPP
+  document.getElementById("confirmForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("confName").value;
+    const phone = document.getElementById("confPhone").value;
+    const obs = document.getElementById("confObs").value;
+
+    const message = `
+Olá! Gostaria de confirmar meu pedido 😊
+
+👤 Nome: ${name}
+📱 Telefone: ${phone}
+
+📝 Observações:
+${obs || "Nenhuma observação adicionada."}
+
+Me envie as opções de pagamento, por favor!
+`;
+
+    const encoded = encodeURIComponent(message);
+
+    window.open(`https://wa.me/55SEUNUMEROAQUI?text=${encoded}`, "_blank");
+
+    closeModalConfirm();
+  });
+
+
+</script>
+  
+
+
 </body>
 </html>
