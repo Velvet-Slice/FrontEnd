@@ -1018,3 +1018,119 @@ body {
 
 
 
+
+/* OVERLAY DO MODAL DE CONFIRMAÇÃO */
+.confirm-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.35);
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+
+/* CAIXA DO MODAL */
+.confirm-modal {
+  background: #FFF6E9;
+  width: 450px;
+  padding: 40px 45px;
+  border-radius: 22px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+  position: relative;
+  animation: fadeInUp 0.25s ease;
+  text-align: center;
+}
+
+/* BOTÃO FECHAR */
+.confirm-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 26px;
+  cursor: pointer;
+  background: #FFF;
+  color: #A65110;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* TÍTULO */
+.confirm-modal h2 {
+  font-family: 'Newsreader';
+  font-size: 2.2rem;
+  color: #873B0B;
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+/* SUBTÍTULO */
+.confirm-sub {
+  font-size: 1.1rem;
+  color: #A65110;
+  margin-bottom: 22px;
+}
+
+/* INPUTS */
+.confirm-modal input,
+.confirm-modal textarea {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  background: #FFF0DB;
+  margin-bottom: 16px;
+  outline: none;
+  font-size: 1rem;
+  color: #873B0B;
+}
+
+.confirm-modal textarea {
+  height: 90px;
+  resize: none;
+}
+
+/* BOTÃO CONFIRMAR */
+.confirm-btn {
+  width: 100%;
+  background: #BD4819;
+  color: #FFF;
+  padding: 15px;
+  border: none;
+  border-radius: 28px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.confirm-btn:hover {
+  background: #873B0B;
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+
+/* BOTÃO CANCELAR */
+.cancel-btn {
+  width: 100%;
+  background: #e2d0c5;
+  color: #4F2C1D;
+  padding: 12px;
+  border: none;
+  margin-top: 10px;
+  border-radius: 24px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  background: #d2beb1;
+  transition: 0.2s;
+}
+
+
+
