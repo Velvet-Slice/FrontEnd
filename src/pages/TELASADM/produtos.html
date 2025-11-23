@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="produtos.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter&family=Lexend&family=Newsreader&display=swap"
+    rel="stylesheet" />
+  <title>Velvet Slice - Admin</title>
+</head>
+
+<body>
+  <div class="sidebar">
+    <div class="logo-container">
+      <img src="../../assets/img/logo var 4.png" alt="Logo Velvet Slice" />
+    </div>
+    <ul>
+      <li><a href="../TELASADM/pedidos.html">Pedidos</a></li>
+      <li>Produtos</li>
+      <li><a href="../TELASADM/clientes.html">Clientes</a></li>
+    </ul>
+  </div>
+
+  <div class="content">
+    <h1>Produtos - Cadastro</h1>
+
+    <div class="form-section">
+      <h2>| Cadastro de informações do produto</h2>
+      <form id="formProduto">>
+        <div class="form-row">
+          <input type="hidden" id="idProd" />
+          <input type="text" id="nome" placeholder="Nome do Produto" />
+          <input type="text" id="preco" placeholder="Preço (R$)" />
+          <textarea type="text" id="descricao" placeholder="Descrição do Produto"></textarea>
+        </div>
+
+        <div class="form-row full-width">
+          <label class="file-upload">
+            <span>Imagem do Produto:</span>
+            <input type="file" id="imagem" accept="image/*" />
+          </label>
+        </div>
+
+        <div class="button-row">
+          <button type="button" id="btnSalvar">Salvar</button>
+          <button type="button" id="btnEditar">Editar</button>
+          <button type="button" id="btnExcluir">Excluir</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="table-section">
+      <h2>Lista de Produtos</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Descrição</th>
+            <th>Imagem</th>
+          </tr>
+        </thead>
+        <tbody id="tabelaProdutosBody">
+          <tr>
+            <td>#PROD001</td>
+            <td>Pizza Margherita</td>
+            <td>R$ 39,90</td>
+            <td>Molho de tomate, mussarela, manjericão</td>
+            <td><img src="/imagensdoprojeto/pizza.png" alt="Produto" class="produto-img" /></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script src="js/produtos.js"></script>
+</body>
+
+</html>

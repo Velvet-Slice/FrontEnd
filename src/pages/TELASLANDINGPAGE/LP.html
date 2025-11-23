@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velvet Slice</title>
+  <link rel="stylesheet" href="LP.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+       <a href="#1">
+           <img src="/src/assets/img/Logo_padrão.png" width="150" alt="logo">
+        </a>
+      </div>
+      <ul class="nav-links" >
+        <li><a href="#2">Produtos</a></li>
+        <li><a href="#3">Contato</a></li>
+        <li><a href="#4">Reviews</a></li>
+        <li><a href="#5">Sobre nós</a></li>
+      </ul>
+      <div class="nav-actions" >
+        <button class="login-btn"><a href="../TELASLOGIN/Login.html">Entrar</a></button>
+          <button id="btn-cart" class="btn-cart">
+          <img src="/src/assets/img/carrinho.png" width="45" height="45" alt="carrinho" />
+            <button id="btn-cart" class="btn-cart">  </button>
+
+        </span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="hero" id="1">
+    <div class="hero-text">
+      <h1><span class="fonte-especial">Sua confeitaria online</span></h1>
+      <p>Delicadeza que derrete na boca</p>
+      <button class="cta-btn" >Escolha o seu bolo</button>
+    </div>
+
+    <section class="carousel">
+      <div class="carousel-container">
+        <button class="carousel-btn prev">‹</button>
+        <div class="carousel-track">
+          <img src="/src/assets/img/BoloLP.png" alt="Bolo 1" />
+          <img  src="/src/assets/img/BoloTeste2.png" alt="Bolo 2" />
+          <img  src="/src/assets/img/BoloTeste3.png" alt="Bolo 3" />
+          <img  src="/src/assets/img/BoloTeste4.png" alt="Bolo 4" />
+        </div>
+        <button class="carousel-btn next">›</button>
+      </div>
+    </section>
+
+    <script>
+      const track = document.querySelector('.carousel-track');
+      const prevBtn = document.querySelector('.prev');
+      const nextBtn = document.querySelector('.next');
+      let index = 0;
+
+      const updateCarousel = () => {
+        const width = track.children[0].clientWidth;
+        track.style.transform = `translateX(-${index * width}px)`;
+      };
+
+      nextBtn.addEventListener('click', () => {
+        if (index < track.children.length - 1) index++;
+        updateCarousel();
+      });
+
+      prevBtn.addEventListener('click', () => {
+        if (index > 0) index--;
+        updateCarousel();
+      });
+
+      window.addEventListener('resize', updateCarousel);
+    </script>
+  </main>
+  <section class="catalogo" id="2">
+    <h1>Catálogo</h1>
+   
+    <div class="grade">
+      <div class="item">
+        <img src="../../assets/img/Caseirinho.png" alt="Bolo Caseirinho">
+        <p class="nome">Caseirinho</p>
+        <p class="preco">R$ 79,90</p>
+      </div>
+
+      <div class="item">
+        <img src="../../assets/img/Mel e amor.png" alt="Bolo Mel e Amor">
+        <p class="nome">Mel e Amor</p>
+        <p class="preco">R$ 82,90</p>
+      </div>
+
+      <div class="item">
+        <img src="../../assets/img/Frutado.png" alt="Bolo Frutado">
+        <p class="nome">Frutado</p>
+        <p class="preco">R$ 89,90</p>
+      </div>
+
+      <div class="item">
+        <img src="../../assets/img/Mel e amor.png" alt="Bolo Veludo">
+        <p class="nome">Veludo</p>
+        <p class="preco">R$ 199,90</p>
+      </div>
+
+      <div class="item">
+        <img src="../../assets/img/Encanto.png" alt="Bolo Encanto">
+        <p class="nome">Encanto</p>
+        <p class="preco">R$ 94,90</p>
+      </div>
+
+      <div class="item">
+        <img src="../../assets/img/Caramelo.png" alt="Bolo Caramelo">
+        <p class="nome">Caramelo</p>
+        <p class="preco">R$ 85,90</p>
+      </div>
+
+      <div class="item">
+        <img src="../../assets/img/Tropical.png" alt="Bolo Tropical">
+        <p class="nome">Tropical</p>
+        <p class="preco">R$ 99,90</p>
+      </div>
+
+       <div class="item">
+        <img src="../../assets/img/Tropical.png" alt="Bolo Tropical">
+        <p class="nome">Tropical</p>
+        <p class="preco">R$ 99,90</p>
+      </div>
+         <div class="item">
+        <img src="../../assets/img/Caseirinho.png" alt="Bolo Tropical">
+        <p class="nome">Tropical</p>
+        <p class="preco">R$ 99,90</p>
+      </div>
+
+       <div class="item">
+        <img src="../../assets/img/Frutado.png" alt="Bolo Tropical">
+        <p class="nome">Tropical</p>
+        <p class="preco">R$ 99,90</p>
+      </div>
+    </div>
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal-content">
+        <span class="close-modal" id="closeModal">×</span>
+    
+        <div class="modal-left">
+          <img id="modalImg" src="" alt="">
+        </div>
+    
+        <div class="modal-right">
+          <h2 id="modalTitle"></h2>
+          <p id="modalDesc"></p>
+          <p class="modal-price" id="modalPrice"></p>
+    
+          <div class="modal-actions">
+            <div class="quantity-group">
+              <button class="qty-btn" id="decrease">−</button>
+              <span id="quantity">01</span>
+              <button class="qty-btn" id="increase">+</button>
+            </div>
+        
+            <button class="add-btn">Adicionar</button>
+        </div>
+        </div>
+      </div>
+    </div>
+    <script src="modal.js"></script>
+  </section>
+
+  <section class="pedido" id="3">
+    <div class="pedido-container">
+      <div class="pedido-img">
+
+        <img src="../../assets/img/Fazer um pedido.png" alt="">
+      </div>
+  
+      <div class="pedido-form">
+        <h2>Como fazer um pedido ?</h2>
+        <p>Informe seus dados e entraremos em contato com você em instantes!</p>
+  
+        <form>
+          <input type="text" placeholder="Nome">
+          <input type="tel" placeholder="Telefone">
+          <button type="submit" class="btn-enviar">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+    <section class="reviews" id="4">
+        <h2>Reviews</h2>
+        <div class="reviews-container">
+
+            <div class="review-card">
+                <img src="../../assets/img/15anos.png" alt="Festa de 15 anos">
+                <p><strong>Festa de 15 anos:</strong><br>
+                "Nosso agradecimento especial à Velvet Slice pelo excelente trabalho na festa de 15 anos da nossa filha. 
+                O bolo ficou perfeito e delicioso, agradando a todos os convidados. Ficamos muito satisfeitos!"</p>
+            </div>
+
+            <div class="review-card">
+              
+                <p><strong>Casamento:</strong><br>
+                "Queremos agradecer imensamente à Velvet Slice pelo trabalho incrível na nossa festa de casamento. 
+                Os bolos estavam lindos e deliciosos, tornando nosso dia ainda mais especial. Super recomendo!"</p>
+              <img src="../../assets/img/casamento.png" alt="Casamento">
+            </div>
+
+            <div class="review-card">
+                <img src="../../assets/img/aniversario.png" alt="Aniversário">
+                <p><strong>Aniversário:</strong><br>
+                "Obrigado, Velvet Slice, por tornar a festa de aniversário do nosso filho inesquecível! 
+                O bolo estava maravilhoso e encantou a todos com sua beleza e sabor. Vocês fizeram toda a diferença!"</p>
+            </div>
+
+        </div>
+    </section>
+
+  
+   
+
+
+
+<section class="sobre-nos">
+  <div class="sobre-nos-container">
+    <div class="imagem">
+      <img src="/src/assets/img/Nos.png" alt="Fachada da Velvet Slice">
+    </div>
+
+    <div class="texto" id="5">
+      <h2>Sobre nós...</h2>
+
+      <p>
+        A Velvet Slice nasceu da paixão por confeitaria artesanal e do desejo de transformar momentos simples em memórias inesquecíveis. Inspirados pelas tradições europeias e pelo carinho das receitas caseiras, mergulhamos fundo no universo dos bolos decorados. Seja para celebrar um aniversário, marcar um casamento ou adoçar um dia comum, a Velvet Slice está aqui para dividir com o mundo o que fazemos de melhor — fatias que contam histórias.
+      </p>
+
+      <p>
+        Cada bolo que criamos respeita a arte da confeitaria clássica, mas traz também um toque de inovação e personalidade. Buscamos as melhores matérias-primas, priorizando ingredientes naturais e opções mais saudáveis, sem abrir mão do sabor e da beleza.
+      </p>
+
+      <p>
+        Nosso segredo: fazer tudo com propósito. Da escolha do recheio à finalização da decoração, cada etapa é feita com cuidado, pensando em você.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+  <footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-brand">
+      <a href="#1">
+      <img src="/src/assets/img/LogoRodape.png" width="170" alt="Velvet Slice">
+      </a>
+      <p>Descubra a doçura que transforma momentos em memórias. Velvet Slice, bolos artesanais pensados para te encantar em cada detalhe.</p>
+
+      <div class="social-icons">
+        <a href="#"><img src="/src/assets/img/Facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="/src/assets/img/Instagram.png" alt="Instagram"></a>
+        <a href="#"><img src="/src/assets/img/Google.png" alt="Google"></a>
+        <a href="#"><img src="/src/assets/img/Linkedln.png" alt="LinkedIn"></a>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <div class="column">
+        <h3>Sobre</h3>
+        <a href="#">Quem somos</a>
+        <a href="#">Nossa história</a>
+        <a href="#">Nossa equipe</a>
+        <a href="#">Missão e valores</a>
+        <a href="#">Depoimentos</a>
+      </div>
+
+      <div class="column">
+        <h3>Atendimento</h3>
+        <a href="#">Contato</a>
+        <a href="#">Localização</a>
+        <a href="#">Encomendas</a>
+        <a href="#">Perguntas frequentes</a>
+        <a href="#">Horários de funcionamento</a>
+      </div>
+
+      <div class="column">
+        <h3>Produtos</h3>
+        <a href="#">Bolos personalizados</a>
+        <a href="#">Bolos finos</a>
+        <a href="#">Bolos para festas</a>
+        <a href="#">Bolos temáticos</a>
+        <a href="#">Bolos infantis</a>
+      </div>
+
+      <div class="column">
+        <h3>Explore</h3>
+        <a href="#">Blog de receitas</a>
+        <a href="#">Promoções</a>
+        <a href="#">Eventos e novidades</a>
+        <a href="#">Dicas de conservação</a>
+        <a href="#">Galeria de fotos</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>Copyright© 2025 VelvetSlice. Todos os direitos reservados.</p>
+    <div class="footer-legal">
+      <a href="#">Política de Privacidade</a>
+      <a href="#">Termos de Uso</a>
+      <a href="#">Legal</a>
+    </div>
+  </div>
+</footer>
+
+<!--CARRINHO -->
+<div id="cart-modal" class="cart-overlay" style="display: none;">
+
+  <div class="cart-container">
+    <button class="close-btn">✕</button>
+
+    <div class="cart-header">
+          <img src="/src/assets/img/carrinho.png" width="45" height="45" alt="carrinho" />
+      <h2>Seu carrinho</h2>
+    </div>
+
+    <div class="cart-items">
+    </div>
+
+    <div class="subtotal">
+      <p>Subtotal: <strong id="subtotal-value">R$ 0,00</strong></p>
+    </div>
+
+    <button class="finalize-btn">Finalizar pedido</button>
+  </div>
+</div>
+
+<div class="confirm-overlay" id="confirmOverlay">
+  <div class="confirm-modal">
+    
+    <span class="confirm-close" id="closeConfirm">×</span>
+
+    <h2>Confirmar pedido</h2>
+    <p class="confirm-sub">Preencha seus dados para continuar</p>
+
+    <form id="confirmForm">
+      <input type="text" id="confName" placeholder="Seu nome" required>
+      <input type="tel" id="confPhone" placeholder="Seu telefone" required>
+      <textarea id="confObs" placeholder="Observações (opcional)"></textarea>
+
+      <button type="submit" class="confirm-btn">Confirmar e ir para o WhatsApp</button>
+      <button type="button" class="cancel-btn" id="cancelConfirm">Cancelar</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  const cartModal = document.getElementById("cart-modal");
+  const btnCart = document.getElementById("btn-cart");
+  const closeBtn = document.querySelector(".close-btn");
+
+  // abre 
+  btnCart.addEventListener("click", () => {
+    cartModal.style.display = "flex";
+  });
+
+  // fecha
+  closeBtn.addEventListener("click", () => {
+    cartModal.style.display = "none";
+  });
+});
+cartModal.addEventListener("click", e => {
+  if (e.target === cartModal) {
+    cartModal.style.display = "none";
+  }
+});
+
+</script>
+
+
+<script>
+  const confirmOverlay = document.getElementById("confirmOverlay");
+  const finalizeBtn = document.querySelector(".finalize-btn");
+  const closeConfirm = document.getElementById("closeConfirm");
+  const cancelConfirm = document.getElementById("cancelConfirm");
+
+  
+  finalizeBtn.addEventListener("click", () => {
+    confirmOverlay.style.display = "flex";
+  });
+
+  function closeModalConfirm() {
+    confirmOverlay.style.display = "none";
+  }
+
+  closeConfirm.addEventListener("click", closeModalConfirm);
+  cancelConfirm.addEventListener("click", closeModalConfirm);
+
+  
+  confirmOverlay.addEventListener("click", e => {
+    if (e.target === confirmOverlay) closeModalConfirm();
+  });
+
+  // ENVIO PARA WHATSAPP
+  document.getElementById("confirmForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("confName").value;
+    const phone = document.getElementById("confPhone").value;
+    const obs = document.getElementById("confObs").value;
+
+    const message = `
+Olá! Gostaria de confirmar meu pedido 😊
+
+👤 Nome: ${name}
+📱 Telefone: ${phone}
+
+📝 Observações:
+${obs || "Nenhuma observação adicionada."}
+
+Me envie as opções de pagamento, por favor!
+`;
+
+    const encoded = encodeURIComponent(message);
+
+    window.open(`https://wa.me/55SEUNUMEROAQUI?text=${encoded}`, "_blank");
+
+    closeModalConfirm();
+  });
+
+
+</script>
+  
+
+
+</body>
+</html>
