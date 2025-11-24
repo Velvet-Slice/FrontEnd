@@ -1,39 +1,61 @@
 const API_URL = "http://localhost:8080/produtos";
 
-// Seleção de elementos do DOM
-const form = document.getElementById("formProduto");
 const inputId = document.getElementById("idProd");
 const inputNome = document.getElementById("nome");
 const inputPreco = document.getElementById("preco");
 const inputDescricao = document.getElementById("descricao");
-const inputImagem = document.getElementById("imagem");
+const inputImagem = document.getElementById("imagem"); // Input type="file"
 const tabelaBody = document.getElementById("tabelaProdutosBody");
+const form = document.getElementById("formProduto");
 
 const btnSalvar = document.getElementById("btnSalvar");
 const btnEditar = document.getElementById("btnEditar");
 const btnExcluir = document.getElementById("btnExcluir");
 
-// 1. Listar Produtos (GET)
+document.addEventListener("DOMContentLoaded", () => {
+  listarProdutos();
+
+  btnSalvar.onclick = (e) => {
+    e.preventDefault();
+    salvarProduto();
+  };
+  btnEditar.onclick = (e) => {
+    e.preventDefault();
+    editarProduto();
+  };
+  btnExcluir.onclick = (e) => {
+    e.preventDefault();
+    excluirProduto();
+  };
+});
+
 async function listarProdutos() {
   try {
     const response = await fetch(API_URL);
-    if (!response.ok) throw new Error("Erro ao buscar produtos");
     const produtos = await response.json();
     renderizarTabela(produtos);
   } catch (error) {
-    console.error("Erro:", error);
-    alert("Não foi possível carregar os produtos.");
+    console.error("Erro ao listar:", error);
   }
 }
 
-// 2. Salvar Produto (POST)
 async function salvarProduto() {
-  if (!validarFormulario()) return;
+  if (!inputNome.value || !inputPreco.value) {
+    alert("Preencha Nome e Preço!");
+    return;
+  }
 
   const formData = new FormData();
+
   formData.append("nome", inputNome.value);
-  formData.append("preco", inputPreco.value);
   formData.append("descricao", inputDescricao.value);
+
+  let precoFormatado = inputPreco.value
+    .replace("R$", "")
+    .replace(/\./g, "")
+    .replace(",", ".")
+    .trim();
+  formData.append("preco", precoFormatado);
 
   if (inputImagem.files[0]) {
     formData.append("imagem", inputImagem.files[0]);
@@ -42,7 +64,7 @@ async function salvarProduto() {
   try {
     const response = await fetch(API_URL, {
       method: "POST",
-      body: formData, // Não definir Content-Type, o browser define o boundary
+      body: formData,
     });
 
     if (response.ok) {
@@ -50,28 +72,32 @@ async function salvarProduto() {
       limparFormulario();
       listarProdutos();
     } else {
-      alert("Erro ao salvar produto.");
+      const erroTexto = await response.text();
+      console.error("Erro do Backend:", erroTexto);
+      alert("Erro ao salvar: " + response.status);
     }
   } catch (error) {
-    console.error("Erro:", error);
+    console.error("Erro de rede:", error);
+    alert("Erro de conexão.");
   }
 }
 
-// 3. Editar Produto (PUT)
 async function editarProduto() {
   const id = inputId.value;
-  if (!id) {
-    alert("Selecione um produto na tabela para editar.");
-    return;
-  }
+  if (!id) return alert("Selecione um produto.");
 
   const formData = new FormData();
-  formData.append("id", id);
   formData.append("nome", inputNome.value);
-  formData.append("preco", inputPreco.value);
   formData.append("descricao", inputDescricao.value);
 
-  // Só anexa imagem se o usuário escolheu uma nova
+  let precoFormatado = inputPreco.value
+    .replace("R$", "")
+    .replace(/\./g, "")
+    .replace(",", ".")
+    .trim();
+  formData.append("preco", precoFormatado);
+
+  // Na edição, a imagem é opcional. Só envia se o usuário escolheu uma nova.
   if (inputImagem.files[0]) {
     formData.append("imagem", inputImagem.files[0]);
   }
@@ -83,122 +109,73 @@ async function editarProduto() {
     });
 
     if (response.ok) {
-      alert("Produto atualizado com sucesso!");
+      alert("Produto atualizado!");
       limparFormulario();
       listarProdutos();
     } else {
-      alert("Erro ao editar produto.");
+      alert("Erro ao editar: " + response.status);
     }
-  } catch (error) {
-    console.error("Erro:", error);
+  } catch (e) {
+    console.error(e);
   }
 }
 
-// 4. Excluir Produto (DELETE)
 async function excluirProduto() {
   const id = inputId.value;
-  if (!id) {
-    alert("Selecione um produto na tabela para excluir.");
-    return;
-  }
-
-  if (!confirm("Tem certeza que deseja excluir este produto?")) return;
+  if (!id || !confirm("Deseja realmente excluir?")) return;
 
   try {
-    const response = await fetch(`${API_URL}/${id}`, {
-      method: "DELETE",
-    });
-
+    const response = await fetch(`${API_URL}/${id}`, { method: "DELETE" });
     if (response.ok) {
       alert("Produto excluído!");
       limparFormulario();
       listarProdutos();
     } else {
-      alert("Erro ao excluir produto.");
+      alert("Erro ao excluir.");
     }
-  } catch (error) {
-    console.error("Erro:", error);
+  } catch (e) {
+    console.error(e);
   }
 }
 
-// --- FUNÇÕES AUXILIARES ---
-
-function renderizarTabela(produtos) {
+function renderizarTabela(lista) {
   tabelaBody.innerHTML = "";
-  produtos.forEach((produto) => {
+  lista.forEach((p) => {
     const tr = document.createElement("tr");
 
-    // Formatar preço
-    const precoFormatado = new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    }).format(produto.preco);
-
-    // Resolver URL da imagem (se houver)
-    // Assume que o backend serve imagens estáticas mapeadas em /imagens-upload/**
-    const imgUrl = produto.imagemUrl
-      ? `http://localhost:8080${produto.imagemUrl}`
-      : "";
+    const imgTag = p.imagemUrl
+      ? `<img src="http://localhost:8080${p.imagemUrl}" style="height:50px;">`
+      : "Sem img";
 
     tr.innerHTML = `
-            <td>#${produto.id}</td>
-            <td>${produto.nome}</td>
-            <td>${precoFormatado}</td>
-            <td>${produto.descricao || "-"}</td>
-            <td>
-                ${
-                  imgUrl
-                    ? `<img src="${imgUrl}" alt="${produto.nome}" class="produto-img" style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;">`
-                    : "Sem imagem"
-                }
-            </td>
+            <td>${p.id}</td>
+            <td>${p.nome}</td>
+            <td>R$ ${p.preco}</td>
+            <td>${p.descricao || ""}</td>
+            <td>${imgTag}</td>
         `;
-
-    // Evento de clique na linha para preencher o formulário
-    tr.addEventListener("click", () => preencherFormulario(produto));
+    tr.onclick = () => preencherFormulario(p);
     tr.style.cursor = "pointer";
-
     tabelaBody.appendChild(tr);
   });
 }
 
-function preencherFormulario(produto) {
-  inputId.value = produto.id;
-  inputNome.value = produto.nome;
-  inputPreco.value = produto.preco;
-  inputDescricao.value = produto.descricao;
-  // Nota: Por segurança, inputs do tipo "file" não podem ter valor definido via JS
+function preencherFormulario(p) {
+  inputId.value = p.id;
+  inputNome.value = p.nome;
+  inputPreco.value = p.preco;
+  inputDescricao.value = p.descricao;
+  // Nota: Não é possível definir o valor de um input type="file" por segurança
 
-  // Feedback visual
-  btnSalvar.disabled = true;
-  btnEditar.disabled = false;
-  btnExcluir.disabled = false;
+  btnSalvar.style.display = "none";
+  btnEditar.style.display = "inline-block";
+  btnExcluir.style.display = "inline-block";
 }
 
 function limparFormulario() {
   form.reset();
   inputId.value = "";
-  btnSalvar.disabled = false;
-  btnEditar.disabled = true;
-  btnExcluir.disabled = true;
+  btnSalvar.style.display = "inline-block";
+  btnEditar.style.display = "none";
+  btnExcluir.style.display = "none";
 }
-
-function validarFormulario() {
-  if (!inputNome.value || !inputPreco.value) {
-    alert("Nome e Preço são obrigatórios.");
-    return false;
-  }
-  return true;
-}
-
-// --- EVENTOS ---
-document.addEventListener("DOMContentLoaded", () => {
-  listarProdutos();
-  btnEditar.disabled = true;
-  btnExcluir.disabled = true;
-});
-
-btnSalvar.addEventListener("click", salvarProduto);
-btnEditar.addEventListener("click", editarProduto);
-btnExcluir.addEventListener("click", excluirProduto);
-btnLimpar.addEventListener("click", limparFormulario);

@@ -29,7 +29,7 @@
 
     <div class="form-section">
       <h2>| Cadastro de informações do produto</h2>
-      <form id="formProduto">>
+      <form id="formProduto">
         <div class="form-row">
           <input type="hidden" id="idProd" />
           <input type="text" id="nome" placeholder="Nome do Produto" />
@@ -40,14 +40,14 @@
         <div class="form-row full-width">
           <label class="file-upload">
             <span>Imagem do Produto:</span>
-            <input type="file" accept="image/*" />
+            <input type="file" id="imagem" accept="image/*" />
           </label>
         </div>
 
         <div class="button-row">
-          <button type="button" id="btnSalvar">Salvar</button>
-          <button type="button" id="btnEditar">Editar</button>
-          <button type="button" id="btnExcluir">Excluir</button>
+          <button type="submit" id="btnSalvar">Salvar</button>
+          <button type="submit" id="btnEditar">Editar</button>
+          <button type="submit" id="btnExcluir">Excluir</button>
         </div>
       </form>
     </div>
