@@ -1,3 +1,8 @@
+/* --- RESET E ESTRUTURA GERAL --- */
+* {
+    box-sizing: border-box; /* Garante que padding não estoure larguras */
+}
+
 body {
     margin: 0;
     background-color: #FFF6E9;
@@ -6,87 +11,144 @@ body {
     align-items: center;
     height: 100vh;
     font-family: "Newsreader", serif;
-  }
-  
-  .container {
+}
+
+.container {
     text-align: center;
     width: 100%;
     max-width: 400px;
     padding: 10px;
-  }
-  
-  .back {
+}
+
+/* --- HEADER E LOGO --- */
+.back {
     display: block;
     text-align: left;
     color: #4F2C1D;
     text-decoration: none;
     margin-bottom: 10px;
     font-size: 14px;
-  }
-  
-  .logo {
+    font-weight: bold;
+}
+
+.logo {
     width: 70%;
     margin-bottom: 15px;
-    padding-left: 65px;
-  }
-  
-  .cadastro-form {
+    /* Ajustei o padding-left para centralizar melhor visualmente */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- FORMULÁRIO --- */
+.cadastro-form {
     background-color: white;
-    padding: 20px;
-    width: 105%;
+    padding: 30px 20px; /* Aumentei um pouco o padding vertical */
+    width: 100%;
     margin-bottom: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .cadastro-form h2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cadastro-form h2 {
     color: #4F2C1D;
-  }
-  
-  .mensagem {
+    margin: 0;
+}
+
+.mensagem {
     font-size: 14px;
     color: #4F2C1D;
     margin-top: 10px;
-    margin-bottom: 30px;
-  }
-  
-  .campos-cadastro {
-    margin-top: 10px;
-    
-  
-  }
+    margin-bottom: 20px;
+    text-align: center;
+}
 
-  .login-form input::placeholder,
-  .cadastro-form input::placeholder {
-  color: #4f2c1dc4;
-  font-weight: bold;
-  font-family: "Newsreader", serif;
-}       
-  
-  .cadastro-form input {
-    
+.campos-cadastro {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- INPUTS --- */
+.login-form input::placeholder,
+.cadastro-form input::placeholder {
+    color: #4f2c1dc4;
+    font-weight: bold;
+    font-family: "Newsreader", serif;
+}
+
+.cadastro-form input {
     border: 1px solid #E5E5E5;
     transition: all 0.3s ease;
     outline: 0;
     background-color: #FFF6E9;
     border-radius: 5px;
-    width: 330px;
+    width: 100%; /* Ocupa a largura disponível do form */
+    max-width: 330px; /* Limita para não ficar gigante */
     padding: 12px;
-    margin-bottom: 25px;
+    margin-bottom: 15px; /* Reduzi um pouco para caber tudo na tela */
     font-size: 14px;
-  }
-  
-  button {
-    width: 40%;
+}
+
+.cadastro-form input:focus {
+    border-color: #4F2C1D;
+    background-color: #fff;
+}
+
+/* --- BOTÃO --- */
+button {
+    width: 50%;
     background-color: #4F2C1D;
     color: white;
     border: none;
-    padding-top: 20px;
     border-radius: 50px;
     padding: 12px;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     font-family: "Newsreader", serif;
     font-size: 16px;
+    font-weight: bold;
     cursor: pointer;
-  }
-  
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #6b3e2a;
+}
+
+/* --- NOVAS CLASSES DE MENSAGEM (STATUS) --- */
+
+.status-msg {
+    margin-bottom: 15px; /* Espaço entre a mensagem e o botão */
+    padding: 12px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    width: 100%;
+    max-width: 330px; /* Mesma largura dos inputs */
+}
+
+/* SUCESSO (Verde) */
+.status-success {
+    background-color: #dcfce7; /* Fundo verde claro */
+    color: #166534;            /* Texto verde escuro */
+    border: 1px solid #bbf7d0;
+}
+
+/* ERRO (Vermelho) */
+.status-error {
+    background-color: #fee2e2; /* Fundo vermelho claro */
+    color: #991b1b;            /* Texto vermelho escuro */
+    border: 1px solid #fecaca;
+}
+
+/* ESCONDIDO */
+.hidden {
+    display: none;
+}
