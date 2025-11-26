@@ -338,6 +338,7 @@
   </div>
 </div>
 
+
 <div class="confirm-overlay" id="confirmOverlay">
   <div class="confirm-modal">
     
@@ -345,11 +346,19 @@
 
     <h2>Confirmar pedido</h2>
     <p class="confirm-sub">Preencha seus dados para continuar</p>
+    <p class="confirm-info">Selecione a data desejada para entrega da encomenda</p>
 
     <form id="confirmForm">
+      
       <input type="text" id="confName" placeholder="Seu nome" required>
+
       <input type="tel" id="confPhone" placeholder="Seu telefone" required>
+
       <textarea id="confObs" placeholder="Observações (opcional)"></textarea>
+
+  
+      <label for="confDate" class="date-label">Data de entrega da encomenda</label>
+      <input type="date" id="confDate" required>
 
       <button type="submit" class="confirm-btn">Confirmar e ir para o WhatsApp</button>
       <button type="button" class="cancel-btn" id="cancelConfirm">Cancelar</button>
@@ -357,22 +366,24 @@
   </div>
 </div>
 
+
 <script>
   document.addEventListener("DOMContentLoaded", () => {
   const cartModal = document.getElementById("cart-modal");
   const btnCart = document.getElementById("btn-cart");
   const closeBtn = document.querySelector(".close-btn");
 
-  // abre 
+
   btnCart.addEventListener("click", () => {
     cartModal.style.display = "flex";
   });
 
-  // fecha
+
   closeBtn.addEventListener("click", () => {
     cartModal.style.display = "none";
   });
 });
+
 cartModal.addEventListener("click", e => {
   if (e.target === cartModal) {
     cartModal.style.display = "none";
@@ -405,7 +416,8 @@ cartModal.addEventListener("click", e => {
     if (e.target === confirmOverlay) closeModalConfirm();
   });
 
-  // ENVIO PARA WHATSAPP
+
+  
   document.getElementById("confirmForm").addEventListener("submit", (e) => {
     e.preventDefault();
 

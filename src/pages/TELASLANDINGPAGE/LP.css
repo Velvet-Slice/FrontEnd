@@ -1076,7 +1076,7 @@ body {
   margin-bottom: 22px;
 }
 
-/* INPUTS */
+
 .confirm-modal input,
 .confirm-modal textarea {
   width: 100%;
@@ -1088,6 +1088,12 @@ body {
   outline: none;
   font-size: 1rem;
   color: #873B0B;
+}
+
+.confirm-modal input::placeholder,
+.confirm-modal textarea::placeholder {
+  color: #A65110;
+  font-weight: 500;
 }
 
 .confirm-modal textarea {
@@ -1132,5 +1138,21 @@ body {
   transition: 0.2s;
 }
 
+.date-label {
+  font-size: 15px;
+  color: #7a4a2f;
+  margin-bottom: 10px;
+  display: block;
+  font-weight: 600;
+  text-align: left;
+  margin-left: 5px;
+}
+
+.confirm-info {
+  font-size: 14px;
+  color: #a07a5b;
+  margin-bottom: 15px;
+  
+}
 
 
