@@ -33,6 +33,15 @@
         <input type="date" placeholder="Data do Pedido" />
         <input type="date" placeholder="Data da Entrega" />
         <textarea placeholder="Descrição do Pedido"></textarea>
+
+        <select class="status-pedido">
+        <option value="" disabled selected hidden>Status do Pedido</option>
+        <option value="pendente">Pendente</option>
+        <option value="produzindo">Produzindo</option>
+        <option value="pronto">Pronto para Retirada</option>
+        <option value="entregue">Entregue</option>
+        </select>
+
         <label class="checkbox-container">
           <input type="checkbox" />
           <span>Pago</span>
@@ -51,26 +60,29 @@
     <div class="table-section">
       <h2>Lista de Pedidos</h2>
       <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Cliente</th>
-            <th>Data Pedido</th>
-            <th>Entrega</th>
-            <th>Pago</th>
-            <th>Imagem</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>#PED12345</td>
-            <td>Vinicius</td>
-            <td>2025-10-21</td>
-            <td>2025-10-25</td>
-            <td>Sim</td>
-            <td><img src="/imagensdoprojeto/exemplo.png" alt="Pedido" class="pedido-img" /></td>
-          </tr>
-        </tbody>
+       <thead>
+      <tr>
+        <th>ID</th>
+        <th>Cliente</th>
+        <th>Data Pedido</th>
+        <th>Entrega</th>
+        <th>Pago</th>
+        <th>Status</th>
+        <th>Imagem</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>#PED12345</td>
+        <td>Vinicius</td>
+        <td>2025-10-21</td>
+        <td>2025-10-25</td>
+        <td>Sim</td>
+        <td>Pendente</td>
+        <td><img src="/imagensdoprojeto/exemplo.png" class="pedido-img" /></td>
+      </tr>
+    </tbody>
       </table>
     </div>
   </div>
