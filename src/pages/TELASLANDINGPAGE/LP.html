@@ -39,7 +39,12 @@
     <div class="hero-text">
       <h1><span class="fonte-especial">Sua confeitaria online</span></h1>
       <p>Delicadeza que derrete na boca</p>
-      <button class="cta-btn" >Escolha o seu bolo</button>
+        <button class="cta-btn" id="btn-cta">Escolha o seu bolo</button>
+        <script>
+            document.getElementById("btn-cta").addEventListener("click", () => {
+                window.location.href = "#2";
+            });
+        </script>
     </div>
 
     <section class="carousel">
