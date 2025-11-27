@@ -841,7 +841,7 @@ body {
   }
 }
 
-/*CARRINHO*/
+
 .cart-overlay {
   position: fixed;
   inset: 0;
@@ -914,12 +914,6 @@ body {
   padding-bottom: 12px;
   border-bottom: 1px solid #ddd;
 }
-
-/*.cart-item img {
-  width: 150px;
-  border-radius: 36px;
-  object-fit: cover;
-}*/
 
 .item-info {
   flex: 1;
@@ -1016,10 +1010,6 @@ body {
 }
 
 
-
-
-
-/* OVERLAY DO MODAL DE CONFIRMAÇÃO */
 .confirm-overlay {
   display: none;
   position: fixed;
@@ -1031,7 +1021,7 @@ body {
   z-index: 99999;
 }
 
-/* CAIXA DO MODAL */
+
 .confirm-modal {
   background: #FFF6E9;
   width: 450px;
@@ -1043,7 +1033,7 @@ body {
   text-align: center;
 }
 
-/* BOTÃO FECHAR */
+
 .confirm-close {
   position: absolute;
   top: 16px;
@@ -1060,7 +1050,7 @@ body {
   align-items: center;
 }
 
-/* TÍTULO */
+
 .confirm-modal h2 {
   font-family: 'Newsreader';
   font-size: 2.2rem;
@@ -1069,7 +1059,7 @@ body {
   font-style: italic;
 }
 
-/* SUBTÍTULO */
+
 .confirm-sub {
   font-size: 1.1rem;
   color: #A65110;
@@ -1101,7 +1091,7 @@ body {
   resize: none;
 }
 
-/* BOTÃO CONFIRMAR */
+
 .confirm-btn {
   width: 100%;
   background: #BD4819;
@@ -1120,7 +1110,7 @@ body {
   transition: 0.2s;
 }
 
-/* BOTÃO CANCELAR */
+
 .cancel-btn {
   width: 100%;
   background: #e2d0c5;
@@ -1155,4 +1145,76 @@ body {
   
 }
 
+.cart-item img {
+  width: 70px;
+  height: 70px;
+  border-radius: 12px;
+  object-fit: cover;
+  margin-right: 15px; 
+}
+
+
+.cart-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #BD4819; 
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    font-weight: bold;
+    border: 2px solid #fff; 
+    min-width: 18px;
+    text-align: center;
+}
+
+
+#toast-container {
+    position: fixed;
+    top: 90px; 
+    right: 20px;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    min-width: 280px;
+    padding: 16px 20px;
+    border-radius: 12px;
+    color: #fff;
+    font-family: "Newsreader", serif;
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55); 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.toast.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+.toast.success {
+    background-color: #2e7d32;
+    border-left: 6px solid #1b5e20;
+}
+
+.toast.error {
+    background-color: #c62828; 
+    border-left: 6px solid #8e0000;
+}
+
+.toast.info {
+    background-color: #BD4819; 
+    border-left: 6px solid #873B0B;
+}
 
