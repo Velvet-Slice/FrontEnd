@@ -230,33 +230,43 @@ async function adicionarAoCarrinho(idProduto, qtd) {
 }
 
 async function finalizarPedidoBackend(dataEntrega) {
-    const url = `${API_BASE_URL}/pedidos/checkout?clienteId=${usuarioLogado.clienteId}&dataEntrega=${dataEntrega}`;
+
+    const observacoes = document.getElementById("confObs").value;
+
+    const payload = {
+        clienteId: usuarioLogado.clienteId,
+        dataEntrega: dataEntrega,
+        observacoes: observacoes
+    };
 
     try {
-        const response = await fetch(url, { method: "POST" });
+        const response = await fetch(`${API_BASE_URL}/pedidos/checkout`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        });
+
         const data = await response.json();
 
         if (response.ok && data.whatsappUrl) {
             document.getElementById("confirmOverlay").style.display = "none";
-            
+
             exibirToast("Pedido gerado! Redirecionando...", "success");
-            
+
             setTimeout(() => {
-             
                 window.open(data.whatsappUrl, "_blank");
-              
                 location.reload();
             }, 1500);
+
         } else {
-       
             exibirToast(data.message || "Verifique a data (mínimo 5 dias).", "error");
         }
+
     } catch (error) {
         console.error("Erro checkout:", error);
         exibirToast("Erro ao processar pedido.", "error");
     }
 }
-
 
 function setupInterfaceGrafica() {
     document.getElementById('closeModal').onclick = () => modalProduto.style.display = 'none';
