@@ -83,63 +83,6 @@
     <h1>Catálogo</h1>
    
     <div class="grade">
-      <div class="item">
-        <img src="../../assets/img/Caseirinho.png" alt="Bolo Caseirinho">
-        <p class="nome">Caseirinho</p>
-        <p class="preco">R$ 79,90</p>
-      </div>
-
-      <div class="item">
-        <img src="../../assets/img/Mel e amor.png" alt="Bolo Mel e Amor">
-        <p class="nome">Mel e Amor</p>
-        <p class="preco">R$ 82,90</p>
-      </div>
-
-      <div class="item">
-        <img src="../../assets/img/Frutado.png" alt="Bolo Frutado">
-        <p class="nome">Frutado</p>
-        <p class="preco">R$ 89,90</p>
-      </div>
-
-      <div class="item">
-        <img src="../../assets/img/Mel e amor.png" alt="Bolo Veludo">
-        <p class="nome">Veludo</p>
-        <p class="preco">R$ 199,90</p>
-      </div>
-
-      <div class="item">
-        <img src="../../assets/img/Encanto.png" alt="Bolo Encanto">
-        <p class="nome">Encanto</p>
-        <p class="preco">R$ 94,90</p>
-      </div>
-
-      <div class="item">
-        <img src="../../assets/img/Caramelo.png" alt="Bolo Caramelo">
-        <p class="nome">Caramelo</p>
-        <p class="preco">R$ 85,90</p>
-      </div>
-
-      <div class="item">
-        <img src="../../assets/img/Tropical.png" alt="Bolo Tropical">
-        <p class="nome">Tropical</p>
-        <p class="preco">R$ 99,90</p>
-      </div>
-
-       <div class="item">
-        <img src="../../assets/img/Tropical.png" alt="Bolo Tropical">
-        <p class="nome">Tropical</p>
-        <p class="preco">R$ 99,90</p>
-      </div>
-         <div class="item">
-        <img src="../../assets/img/Caseirinho.png" alt="Bolo Tropical">
-        <p class="nome">Tropical</p>
-        <p class="preco">R$ 99,90</p>
-      </div>
-
-       <div class="item">
-        <img src="../../assets/img/Frutado.png" alt="Bolo Tropical">
-        <p class="nome">Tropical</p>
-        <p class="preco">R$ 99,90</p>
       </div>
     </div>
     <div class="modal-overlay" id="modalOverlay">
@@ -167,7 +110,7 @@
         </div>
       </div>
     </div>
-    <script src="modal.js"></script>
+    <script src="logic-lp.js"></script>
   </section>
 
   <section class="pedido" id="3">
@@ -364,90 +307,6 @@
       <button type="button" class="cancel-btn" id="cancelConfirm">Cancelar</button>
     </form>
   </div>
-</div>
-
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-  const cartModal = document.getElementById("cart-modal");
-  const btnCart = document.getElementById("btn-cart");
-  const closeBtn = document.querySelector(".close-btn");
-
-
-  btnCart.addEventListener("click", () => {
-    cartModal.style.display = "flex";
-  });
-
-
-  closeBtn.addEventListener("click", () => {
-    cartModal.style.display = "none";
-  });
-});
-
-cartModal.addEventListener("click", e => {
-  if (e.target === cartModal) {
-    cartModal.style.display = "none";
-  }
-});
-
-</script>
-
-
-<script>
-  const confirmOverlay = document.getElementById("confirmOverlay");
-  const finalizeBtn = document.querySelector(".finalize-btn");
-  const closeConfirm = document.getElementById("closeConfirm");
-  const cancelConfirm = document.getElementById("cancelConfirm");
-
-  
-  finalizeBtn.addEventListener("click", () => {
-    confirmOverlay.style.display = "flex";
-  });
-
-  function closeModalConfirm() {
-    confirmOverlay.style.display = "none";
-  }
-
-  closeConfirm.addEventListener("click", closeModalConfirm);
-  cancelConfirm.addEventListener("click", closeModalConfirm);
-
-  
-  confirmOverlay.addEventListener("click", e => {
-    if (e.target === confirmOverlay) closeModalConfirm();
-  });
-
-
-  
-  document.getElementById("confirmForm").addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const name = document.getElementById("confName").value;
-    const phone = document.getElementById("confPhone").value;
-    const obs = document.getElementById("confObs").value;
-
-    const message = `
-Olá! Gostaria de confirmar meu pedido 😊
-
-👤 Nome: ${name}
-📱 Telefone: ${phone}
-
-📝 Observações:
-${obs || "Nenhuma observação adicionada."}
-
-Me envie as opções de pagamento, por favor!
-`;
-
-    const encoded = encodeURIComponent(message);
-
-    window.open(`https://wa.me/55SEUNUMEROAQUI?text=${encoded}`, "_blank");
-
-    closeModalConfirm();
-  });
-
-
-</script>
-  
-
-
+</div> 
 </body>
 </html>
