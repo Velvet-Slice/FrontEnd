@@ -1,8 +1,10 @@
 const API_BASE_URL = "http://localhost:8080";
 
+
 let produtoSelecionadoId = null;
 let quantidadeAtual = 1;
 const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+
 
 document.addEventListener("DOMContentLoaded", () => {
     carregarProdutos();
@@ -44,11 +46,12 @@ async function carregarProdutos() {
         });
 
     } catch (error) {
-        console.error(error);
+        console.error("Erro ao carregar produtos:", error);
         const grade = document.querySelector(".grade");
         if(grade) grade.innerHTML = "<p>Erro ao carregar catálogo.</p>";
     }
 }
+
 
 const modalProduto = document.getElementById('modalOverlay');
 const quantitySpan = document.getElementById('quantity');
@@ -65,6 +68,7 @@ function abrirModalProduto(produto, imgUrl) {
 
     modalProduto.style.display = 'flex';
 }
+
 
 async function abrirCarrinho() {
     const cartModal = document.getElementById("cart-modal");
@@ -92,7 +96,7 @@ async function carregarItensCarrinho() {
         renderizarItensCarrinho(pedido);
         
     } catch (error) {
-        console.error(error);
+        console.error("Erro ao carregar carrinho:", error);
     }
 }
 
@@ -125,14 +129,12 @@ function renderizarItensCarrinho(pedido) {
 
         itemDiv.innerHTML = `
             <img src="${imgUrl}" alt="${item.produto.nome}" style="width: 70px; height: 70px; border-radius: 10px; object-fit: cover; margin-right: 15px;">
-            
             <div class="item-info">
                 <div class="item-title-line">
                     <h3>${item.produto.nome}</h3>
                     <button class="remove-item" onclick="removerItemCarrinho(${item.id})">×</button>
                 </div>
                 <p>Unitário: R$ ${item.precoUnitario.toFixed(2).replace('.', ',')}</p>
-                
                 <div class="item-bottom">
                     <div class="qty-box">
                         <button onclick="alterarQuantidade(${item.id}, ${item.quantidade - 1})">−</button>
@@ -177,7 +179,7 @@ window.alterarQuantidade = async (idItem, novaQuantidade) => {
             carregarItensCarrinho(); 
         }
     } catch (error) {
-        console.error(error);
+        console.error("Erro update qtd:", error);
         exibirToast("Erro ao atualizar quantidade.", "error");
     }
 };
@@ -193,10 +195,12 @@ window.removerItemCarrinho = async (idItem) => {
             exibirToast("Item removido.", "info");
         }
     } catch (error) {
-        console.error(error);
+        console.error("Erro delete item:", error);
         exibirToast("Erro ao remover item.", "error");
     }
 };
+
+
 
 async function adicionarAoCarrinho(idProduto, qtd) {
     const payload = {
@@ -221,41 +225,45 @@ async function adicionarAoCarrinho(idProduto, qtd) {
         }
     } catch (error) {
         console.error(error);
-        exibirToast("Erro de conexão ao adicionar.", "error");
+        exibirToast("Erro de conexão.", "error");
     }
 }
 
 async function finalizarPedidoBackend(dataEntrega) {
-    const url = `${API_BASE_URL}/pedidos/checkout`;
-    
+
+    const observacoes = document.getElementById("confObs").value;
+
     const payload = {
         clienteId: usuarioLogado.clienteId,
-        dataEntrega: dataEntrega
+        dataEntrega: dataEntrega,
+        observacoes: observacoes
     };
 
     try {
-        const response = await fetch(url, { 
+        const response = await fetch(`${API_BASE_URL}/pedidos/checkout`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload)
         });
-        
+
         const data = await response.json();
 
         if (response.ok && data.whatsappUrl) {
             document.getElementById("confirmOverlay").style.display = "none";
-            
+
             exibirToast("Pedido gerado! Redirecionando...", "success");
-            
+
             setTimeout(() => {
                 window.open(data.whatsappUrl, "_blank");
                 location.reload();
             }, 1500);
+
         } else {
             exibirToast(data.message || "Verifique a data (mínimo 5 dias).", "error");
         }
+
     } catch (error) {
-        console.error(error);
+        console.error("Erro checkout:", error);
         exibirToast("Erro ao processar pedido.", "error");
     }
 }
@@ -309,6 +317,7 @@ function setupInterfaceGrafica() {
     const cancelConfirm = document.getElementById("cancelConfirm");
     const confirmForm = document.getElementById("confirmForm");
 
+    
     if (finalizeBtn) {
         finalizeBtn.addEventListener("click", () => {
             if (!usuarioLogado) {
@@ -321,25 +330,30 @@ function setupInterfaceGrafica() {
                 return;
             }
 
+            
             const hoje = new Date();
             hoje.setDate(hoje.getDate() + 5);
             
+           
             const ano = hoje.getFullYear();
             const mes = String(hoje.getMonth() + 1).padStart(2, '0');
             const dia = String(hoje.getDate()).padStart(2, '0');
             const dataMinimaFormatada = `${ano}-${mes}-${dia}`;
 
             const inputData = document.getElementById("confDate");
-            inputData.min = dataMinimaFormatada;
-            inputData.value = dataMinimaFormatada;
+            inputData.min = dataMinimaFormatada; 
+            inputData.value = dataMinimaFormatada; 
 
+           
             const inputNome = document.getElementById("confName");
             const inputTelefone = document.getElementById("confPhone");
 
+            
             if (usuarioLogado.nome) {
                 inputNome.value = usuarioLogado.nome;
             }
             
+        
             if (usuarioLogado.telefone) {
                 inputTelefone.value = usuarioLogado.telefone;
             }
@@ -357,10 +371,12 @@ function setupInterfaceGrafica() {
         confirmForm.addEventListener("submit", (e) => {
             e.preventDefault();
             const dataEntrega = document.getElementById("confDate").value;
+            
             if (!dataEntrega) {
                 exibirToast("Selecione a data de entrega.", "error");
                 return;
             }
+        
             finalizarPedidoBackend(dataEntrega);
         });
     }

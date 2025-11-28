@@ -23,122 +23,113 @@ document.addEventListener("DOMContentLoaded", () => {
 async function carregarClientes() {
   try {
     const response = await fetch(API_URL);
+    if (!response.ok) throw new Error("Erro ao buscar clientes");
 
-    if (!response.ok) {
-      throw new Error(`Erro na rede: ${response.status}`);
-    }
-
-    const clientes = await response.json();
+    const users = await response.json();
     const tbody = document.getElementById("tabela-clientes");
     tbody.innerHTML = "";
 
-    clientes.forEach((cliente) => {
+    users.forEach((user) => {
       const tr = document.createElement("tr");
 
+      // O Backend retorna uma lista de Users.
+      // user.id, user.nome, user.cpf, user.email
       tr.innerHTML = `
-                <td>#${cliente.id}</td>
-                <td>${cliente.nome}</td>
-                <td>${cliente.cpf}</td>
-                <td>${cliente.email}</td>
+                <td>#${user.id}</td>
+                <td>${user.nome}</td>
+                <td>${user.cpf}</td>
+                <td>${user.email}</td>
             `;
 
-      tr.addEventListener("click", () => preencherFormulario(cliente));
+      // Ao clicar na linha, preenche o formulário
+      tr.addEventListener("click", () => preencherFormulario(user));
       tr.style.cursor = "pointer";
 
+      // Efeito visual
       tr.onmouseover = () => (tr.style.backgroundColor = "#f0e6d2");
       tr.onmouseout = () => (tr.style.backgroundColor = "");
 
       tbody.appendChild(tr);
     });
   } catch (error) {
-    console.error("Erro ao carregar clientes:", error);
-    alert("Erro ao conectar com o servidor.");
+    console.error("Erro:", error);
   }
 }
 
-function preencherFormulario(cliente) {
-  const inputId = document.getElementById("inputId");
-  if (inputId) inputId.value = cliente.id;
-
-  document.getElementById("inputNome").value = cliente.nome;
-  document.getElementById("inputCpf").value = cliente.cpf;
-  document.getElementById("inputEmail").value = cliente.email;
-
+function preencherFormulario(user) {
+  document.getElementById("inputId").value = user.id;
+  document.getElementById("inputNome").value = user.nome;
+  document.getElementById("inputCpf").value = user.cpf;
+  document.getElementById("inputEmail").value = user.email;
+  // Senha não é preenchida por segurança
   document.getElementById("inputSenha").value = "";
 
-  console.log("Cliente selecionado ID:", cliente.id); // Para debug
+  console.log("Selecionado ID:", user.id);
 }
 
 async function salvarCliente(metodo) {
-  const id = document.getElementById("inputId")
-    ? document.getElementById("inputId").value
-    : null;
-
+  const id = document.getElementById("inputId").value;
   const nome = document.getElementById("inputNome").value;
   const cpf = document.getElementById("inputCpf").value;
   const email = document.getElementById("inputEmail").value;
   const senha = document.getElementById("inputSenha").value;
 
+  // Validação simples
   if (!nome || !cpf || !email) {
-    alert("Por favor, preencha os campos obrigatórios (Nome, CPF, Email).");
+    alert("Nome, CPF e Email são obrigatórios.");
     return;
   }
 
-  let url = API_URL;
-  if (metodo === "PUT") {
-    if (!id) {
-      alert("Selecione um cliente na tabela primeiro para poder editar.");
-      return;
-    }
-    url = `${API_URL}/${id}`;
-  } else if (metodo === "POST") {
-    if (!senha) {
-      alert("A senha é obrigatória para novos cadastros.");
-      return;
-    }
-  }
-
+  // Objeto a ser enviado
   const dados = {
     nome: nome,
     cpf: cpf,
     email: email,
-    senha: senha, // O backend deve tratar se a senha vier vazia na edição
+    senha: senha, // Pode ir vazia na edição
   };
+
+  let url = API_URL;
+
+  if (metodo === "PUT") {
+    if (!id) {
+      alert("Selecione um cliente para editar.");
+      return;
+    }
+    url = `${API_URL}/${id}`;
+  } else {
+    // POST (Criar) exige senha
+    if (!senha) {
+      alert("Senha é obrigatória para cadastro.");
+      return;
+    }
+  }
 
   try {
     const response = await fetch(url, {
       method: metodo,
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(dados),
     });
 
     if (response.ok) {
-      alert(
-        metodo === "POST"
-          ? "Cliente cadastrado com sucesso!"
-          : "Cliente atualizado com sucesso!"
-      );
+      alert("Operação realizada com sucesso!");
       limparFormulario();
-      carregarClientes(); // Recarrega a tabela
+      carregarClientes();
     } else {
-      const erroTexto = await response.text();
-      alert("Erro ao salvar: " + erroTexto);
+      const erro = await response.text(); // Tenta ler mensagem do backend
+      alert("Erro ao salvar: " + erro);
     }
   } catch (error) {
-    console.error("Erro na requisição:", error);
-    alert("Erro de conexão com o servidor.");
+    console.error("Erro:", error);
+    alert("Erro de conexão.");
   }
 }
 
 async function excluirCliente() {
-  const id = document.getElementById("inputId")
-    ? document.getElementById("inputId").value
-    : null;
+  const id = document.getElementById("inputId").value;
 
   if (!id) {
-    alert("Selecione um cliente na tabela para excluir.");
+    alert("Selecione um cliente para excluir.");
     return;
   }
 
@@ -149,21 +140,19 @@ async function excluirCliente() {
       });
 
       if (response.ok || response.status === 204) {
-        alert("Cliente excluído com sucesso!");
+        alert("Cliente excluído!");
         limparFormulario();
         carregarClientes();
       } else {
-        alert("Erro ao excluir cliente.");
+        alert("Erro ao excluir.");
       }
     } catch (error) {
       console.error("Erro:", error);
-      alert("Erro ao tentar excluir.");
     }
   }
 }
 
 function limparFormulario() {
   document.querySelector("form").reset();
-  const inputId = document.getElementById("inputId");
-  if (inputId) inputId.value = ""; // Limpa o ID oculto para evitar edições acidentais de novos registros
+  document.getElementById("inputId").value = "";
 }
