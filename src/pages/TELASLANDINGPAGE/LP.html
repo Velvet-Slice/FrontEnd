@@ -11,31 +11,46 @@
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
+<header>
     <nav class="navbar">
-      <div class="logo">
-       <a href="#1">
-           <img src="/src/assets/img/Logo_padrão.png" width="150" alt="logo">
-        </a>
-      </div>
-      <ul class="nav-links" >
-        <li><a href="#2">Produtos</a></li>
-        <li><a href="#3">Contato</a></li>
-        <li><a href="#4">Reviews</a></li>
-        <li><a href="#5">Sobre nós</a></li>
-      </ul>
-      <div class="nav-actions">
-    <button class="login-btn"><a href="../TELASLOGIN/Login.html">Entrar</a></button>
-    
-    <button id="btn-cart" class="btn-cart" style="position: relative;">
-        <img src="../../assets/img/carrinho.png" width="45" height="45" alt="carrinho" />
-        <span id="cart-count" class="cart-badge" style="display: none;">0</span>
-    </button>
-      </div>
-    </nav>
-  </header>
 
-  <main class="hero" id="1">
+        <div class="logo">
+            <a href="#1">
+                <img src="/src/assets/img/Logo_padrão.png" width="150" alt="logo">
+            </a>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#2">Produtos</a></li>
+            <li><a href="#3">Contato</a></li>
+            <li><a href="#4">Reviews</a></li>
+            <li><a href="#5">Sobre nós</a></li>
+        </ul>
+
+        <div class="nav-actions">
+
+            <!-- BOTÃO LOGIN + DROPDOWN -->
+            <div class="user-menu">
+                <a id="userButton" class="login-button">Entrar</a>
+
+                <ul id="dropdownMenu" class="dropdown hidden">
+                    <li onclick="logout()">Sair</li>
+                </ul>
+            </div>
+
+            <!-- CARRINHO -->
+            <button id="btn-cart" class="btn-cart" style="position: relative;">
+                <img src="../../assets/img/carrinho.png" width="45" height="45" alt="carrinho" />
+                <span id="cart-count" class="cart-badge" style="display: none;">0</span>
+            </button>
+
+        </div>
+
+    </nav>
+</header>
+
+
+<main class="hero" id="1">
     <div class="hero-text">
       <h1><span class="fonte-especial">Sua confeitaria online</span></h1>
       <p>Delicadeza que derrete na boca</p>

@@ -398,6 +398,28 @@ function verificarLoginHeader() {
     }
 }
 
+function logout() {
+    localStorage.removeItem("usuarioLogado");
+    window.location.href = "../TELASLOGIN/Login.html";
+}
+
+function verificarLoginHeader() {
+    const userButton = document.querySelector("#userButton");
+
+    if (usuarioLogado) {
+        const primeiroNome = usuarioLogado.nome.split(" ")[0];
+        userButton.textContent = `Olá, ${primeiroNome}`;
+    } else {
+        userButton.textContent = "Entrar";
+        userButton.href = "../TELASLOGIN/Login.html";
+
+        // remove dropdown se não estiver logado
+        document.querySelector("#dropdownMenu").classList.add("hidden");
+    }
+}
+
+
+
 function exibirToast(mensagem, tipo = 'success') {
     let container = document.getElementById('toast-container');
     
@@ -431,3 +453,21 @@ function exibirToast(mensagem, tipo = 'success') {
         }, 400); 
     }, 1500); 
 }
+document.addEventListener("DOMContentLoaded", () => {
+
+    const userButton = document.querySelector("#userButton");
+    const dropdownMenu = document.querySelector("#dropdownMenu");
+
+    // Clique para abrir/fechar menu
+    userButton.addEventListener("click", () => {
+        dropdownMenu.classList.toggle("hidden");
+    });
+
+    // Fechar menu clicando fora
+    document.addEventListener("click", (event) => {
+        if (!event.target.closest(".user-menu")) {
+            dropdownMenu.classList.add("hidden");
+        }
+    });
+
+});
